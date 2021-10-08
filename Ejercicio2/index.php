@@ -7,26 +7,26 @@
     function mostrarOperacion(){
 
         //Variables
-        $calculadora = new Calcular();
+        $calculadora = new Calcular($_POST['num1'], $_POST['num2']);
 
         if(isset($_POST['enviar'])){
             switch($_POST['operador']){
                 case '+':
-                    $resultado = $calculadora->sumar($_POST['num1'], $_POST['num2']);
+                    $resultado = $calculadora->sumar();
                     break;
                 case '-':
-                    $resultado = $calculadora->restar($_POST['num1'], $_POST['num2']);
+                    $resultado = $calculadora->restar();
                     break;
                 case '*':
-                    $resultado = $calculadora->multiplicar($_POST['num1'], $_POST['num2']);
+                    $resultado = $calculadora->multiplicar();
                     break;
                 case '/':
-                    $resultado = $calculadora->dividir($_POST['num1'], $_POST['num2']);
+                    $resultado = $calculadora->dividir();
                     break;
             }
             echo 'El resultado de la operación es: '.$resultado;
         }
-        
+
     }
 
 
