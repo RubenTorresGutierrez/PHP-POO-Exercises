@@ -1,18 +1,42 @@
 <?php
 
-    $meses = array(
-        1 => array('Enero', 31),
-        2 => array('Febrero', 28),
-        3 => array('Marzo', 31),
-        4 => array('Abril', 31),
-        5 => array('Mayo', 31),
-        6 => array('Junio', 31),
-        7 => array('Julio', 31),
-        8 => array('Agosto', 31),
-        9 => array('Septiembre', 31),
-        10 => array('Octubre', 31),
-        11 => array('Noviembre', 31),
-        12 => array('Diciembre', 31)
-    );
+    //Importaciones
+    require_once 'fecha.php';
+
+    //Funciones
+    function mostrarFecha(){
+
+        if(isset($_POST['enviar']) && !empty($_POST['fecha'])){
+
+            $fecha = new Fecha($_POST['fecha']);
+            echo '<label for="">El resultado es: </label>';
+            echo '<input type="text" value="' . $fecha->obtenerFecha() . '" /><br />';
+            echo $fecha->obtenerDiasMes();
+
+        }
+
+    }
 
 ?>
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="author" content="rtorresgutierrez.guadalupe@alumnado.fundacionloyola.net" />
+        <title>Ejercicio Básico de POO (2)</title>
+    </head>
+    <body>
+        <form action="index.php" method="post">
+            <input type="text" name="fecha" placeholder="Fecha dd/mm/aaaa" />
+            <input type="submit" value="ENVIAR" name="enviar" />
+            <input type="reset" value="CANCELAR" />
+            <br /><br />
+            <?php
+
+                mostrarFecha();
+
+            ?>
+        </form>
+    </body>
+</html>
