@@ -28,11 +28,13 @@
             return $this->d . '/' . $this->meses[$this->m][0] . '/' . $this->a;
         }
         function obtenerDiasMes(){
+            $this->comprobarBisiesto();
             return $this->meses[$this->m][0] . ' de ' . $this->a . ' tiene ' . $this->meses[$this->m][1] . ' días.';
         }
-        /*function comprobarBisiesto(){
-
-        }*/
+        function comprobarBisiesto(){
+            if($this->a % 4 == 0 && $this->a % 100 != 0)
+                $this->meses[2][1] = 29;
+        }
 
     }
 
